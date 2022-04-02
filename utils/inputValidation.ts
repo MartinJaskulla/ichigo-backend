@@ -37,7 +37,8 @@ function validateAtInCurrentWeek(at: string, type: 'Parameter' | 'Query paramete
 }
 
 export function handleError(error: unknown, response: Response) {
-    console.log(error);
+    // console.error will be hidden in unit test by the silent flag: jest --coverage --silent
+    console.error(error);
     if (error instanceof CustomError) {
         response.status(error.code).send({
             error: {

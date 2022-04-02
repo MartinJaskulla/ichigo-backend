@@ -1,7 +1,7 @@
-import { Database, Rewards } from './database';
+import { Data, Database, Rewards } from './database';
 
 export class InMemoryDatabase implements Database {
-    private data: { [userId: string]: Rewards } = {
+    private data: Data = {
         // To test scenario where databaseRewards are from a previous week, but the user made a valid request for this week, so we are creating new rewards
         // 1: [
         //     {"availableAt": "2020-03-15T00:00:00Z", "redeemedAt": null, "expiresAt": "2020-03-16T00:00:00Z"},
@@ -13,6 +13,10 @@ export class InMemoryDatabase implements Database {
         //     {"availableAt": "2020-03-21T00:00:00Z", "redeemedAt": null, "expiresAt": "2020-03-22T00:00:00Z"}
         // ]
     };
+
+    constructor(initialData?: Data) {
+        if (initialData) this.data = initialData;
+    }
 
     getRewards(userId: string) {
         return this.data[userId];
