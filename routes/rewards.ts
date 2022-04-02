@@ -58,6 +58,7 @@ export function getRewardsRoutes(database: Database) {
                 const matchingReward = databaseRewards[matchingRewardIndex];
                 if (!matchingReward) {
                     throw new CustomError(
+                        // I could also throw a 410 or 422 and clear the database
                         404,
                         `Cannot redeem reward, because there is no matching reward for parameter 'redeemDate': '${request.params.redeemDate}'`
                     );
