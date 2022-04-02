@@ -23,6 +23,7 @@ export function getRewardsRoutes(database: Database) {
         try {
             inputValidation(request.params.userId, request.query.at, 'Query parameter', new Date());
 
+            // firstSecondOfWeek will always be the first second of the current week, because inputValidation throws an error if request.query.at is not in the current week
             const firstSecondOfWeek = getFirstSecondOfWeek(new Date(request.query.at));
 
             const databaseRewards = database.getRewards(request.params.userId);
