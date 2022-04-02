@@ -1,5 +1,5 @@
 import { formatDate } from './formatDate';
-import { Reward, Rewards } from './inMemoryDatabase';
+import { Reward, Rewards } from '../database/database';
 
 export function createRewards(firstSecondOfWeek: Date): Rewards {
     return [

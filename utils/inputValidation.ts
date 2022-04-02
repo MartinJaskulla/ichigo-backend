@@ -37,6 +37,7 @@ function validateAtInCurrentWeek(at: string, type: 'Parameter' | 'Query paramete
 }
 
 export function handleError(error: unknown, response: Response) {
+    console.log(error);
     if (error instanceof CustomError) {
         response.status(error.code).send({
             error: {

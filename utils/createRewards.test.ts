@@ -1,5 +1,5 @@
 import { createRewards } from './createRewards';
-import { Rewards } from './inMemoryDatabase';
+import { Rewards } from '../database/database';
 
 describe('createRewards', () => {
     it('should generate rewards', () => {
