@@ -5,18 +5,18 @@ import { handleError, inputValidation, CustomError } from '../utils/inputValidat
 import { formatDate } from '../utils/formatDate';
 import { Database, Reward, Rewards } from '../database/database';
 
+type SuccessResponse<T> = {
+    data: T;
+};
+
+type ErrorResponse = {
+    error: {
+        message: string;
+    };
+};
+
 export function getRewardsRoutes(database: Database) {
     const rewardsRoutes = express.Router();
-
-    type SuccessResponse<T> = {
-        data: T;
-    };
-
-    type ErrorResponse = {
-        error: {
-            message: string;
-        };
-    };
 
     // /users/1/rewards?at=2020-03-19T12:00:00Z
     rewardsRoutes.get('/users/:userId/rewards', async function getRewards(request, response: Response<SuccessResponse<Rewards> | ErrorResponse>) {
